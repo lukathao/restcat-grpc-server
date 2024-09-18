@@ -1,0 +1,27 @@
+syntax = "proto3";
+option go_package = "github.com/lukathao/restcat-grpc-server/reservations";
+
+message CreateReservationRequest {
+  string token = 1;
+  string restaurant_id = 2;
+  string reservation_name = 3;
+  int32 hours = 4;
+  string date = 5;
+  string email = 6;
+  string number = 7;
+  int32 guests = 8;
+}
+
+message CreateReservationResponse {
+  bytes code = 1;
+  bytes message = 2;
+}
+
+// TODO rename this to ReservationApi
+service ReservationApi {
+  // TODO create more reservatin api methods here
+  rpc Create(CreateReservationRequest) returns (CreateReservationResponse);
+  rpc Read(CreateReservationRequest) returns (CreateReservationResponse);
+  rpc Update(CreateReservationRequest) returns (CreateReservationResponse);
+  rpc Delete(CreateReservationRequest) returns (CreateReservationResponse);
+}
