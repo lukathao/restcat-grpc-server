@@ -1,6 +1,6 @@
 # ReadMe
 
-## Homebrew forumalas
+## Homebrew formulas
 - protobuf
 - clang-format *optional for formatting code
 
