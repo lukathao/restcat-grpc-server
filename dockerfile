@@ -1,14 +1,13 @@
-FROM golang:1.23.0
+FROM golang:alpine AS builder
+
+RUN apk --update add ca-certificates git
 
 WORKDIR /app
 
-COPY go.mod .
-COPY generated/ .
-COPY proto/ .
-COPY types/ .
+COPY . .
 
-RUN go get
+RUN go mod download
 RUN protoc --go_out=generated/reservations --go_opt=paths=source_relative --go-grpc_out=generated/reservations --go-grpc_opt=paths=source_relative proto/reservations.proto
-RUN go build -o bin .
+RUN go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o main .
 
-ENTRYPOINT [ "/app/bin" ]
+CMD ["/app/main"] 
