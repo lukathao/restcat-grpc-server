@@ -6,3 +6,7 @@ build:
 
 run:
 	docker run -e PORT=9000 -p 9000:9000 restcat-grpc-server:latest
+
+make sqlc:
+	sqlc generate
+	
