@@ -6,6 +6,7 @@ To generate code visit the Generate Code section
 For modifying code visit the modifying code section
 Do not mess with anything in these folders:
 - ./db/sqlc
+- ./db/schema/*
 - ./generated/*
 
 ## Homebrew formulas
@@ -23,6 +24,10 @@ Modifying gRPC code
 Modifying sql API
 - you only need to modify the sql commands in these folders and sqlc will generate the API code for you to use, PAY ATTENTION TO THE COMMENT as it will determine how the code is generated for you
 - ./db/query/*
+
+Modifying Db schema
+- Do not directly modify the schemas in the sql files, visit dbdiagram to view the diagrams and modify the schema there, export to postgres and copy over the schema into the schema.up.sql file
+- (requries login) https://dbdiagram.io/d/Restaurantsv2-66fecb7afb079c7ebd40f3a2
 
 ## Generating code
 Generate gRPC code
